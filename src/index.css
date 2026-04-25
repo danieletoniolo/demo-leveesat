@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  --color-levee-dark: #0a0a0b;
+  --color-levee-panel: #161618;
+  --color-levee-border: #27272a;
+  --color-levee-critical: #ef4444;
+  --color-levee-moderate: #eab308;
+  --color-levee-normal: #22c55e;
+  
+  --animate-pulse-fast: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-levee-dark text-slate-100 antialiased;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Leaflet Map Overrides */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  background: #0a0a0b !important;
+}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+  @apply bg-levee-panel text-slate-100 border border-levee-border;
+}
+
+.custom-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes marker-pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.5; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-marker-pulse {
+  animation: marker-pulse 2s infinite;
+}
